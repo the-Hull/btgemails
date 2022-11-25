@@ -2,9 +2,9 @@
 
 ## Background
 
-Extract names of current members of the German parliament and construct their email addresses based on a set of rules (with some exceptions). The information was derived from [https://www.bundestag.de/abgeordnete/biografien/]() See [/R/01_scrape_bta.R]() for the procedure.
+Extract names of current members of the German parliament and construct their email addresses based on a set of rules (with some exceptions). The information was derived from [https://www.bundestag.de/abgeordnete/biografien/]() See [R/01_scrape_bta.R](R/01_scrape_bta.R) for the procedure.
 
-The final data set is found in [/data/kontaktae_bundestagsabgeordnete.xlsx]().
+The final data set is found in [data/kontakte_bundestagsabgeordnete.xlsx](data/kontakte_bundestagsabgeordnete.xlsx).
 
 The data set has eight columns:
 
