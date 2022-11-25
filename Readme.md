@@ -19,8 +19,6 @@ The data set has eight columns:
 | email           | email address, generated as \`email_vorname.email_nachname\@bundestag.de\` |
 | partei          | current party membership                                                   |
 
-: Data description
-
 ------------------------------------------------------------------------
 
 ## License
