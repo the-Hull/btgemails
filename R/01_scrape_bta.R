@@ -171,7 +171,35 @@ kontakt <- data.frame(
 
 # Manuell saeubern -------------------------------------------------------
 
-kontakt$titel <- ifelse(kontakt$titel == 'W.', NA_character_, kontakt$titel)
+# Titel Bereinigung
+kontakt$vorname <- ifelse(kontakt$titel == 'W.' & !is.na(kontakt$titel), "Matthias W.", kontakt$vorname)
+kontakt$titel <- ifelse(kontakt$titel == 'W.' & !is.na(kontakt$titel), NA_character_, kontakt$titel)
+
+# Ausgeschiedene MdBs entfernen (erkennbar an Stern in Partei)
+kontakt[grepl("\\*", kontakt$partei), ]
+
+kontakt <- kontakt[!grepl("\\*", kontakt$partei), ]
+
+
+
+
+# Manuell Emails anpassen -------------------------------------------------
+
+
+kontakt <- kontakt %>% 
+  mutate(email = case_when(
+    vorname == 'Karoline'	& nachname == 'Otte' ~ 'Karo.Otte@bundestag.de',
+    vorname == 'Catarina dos'	& nachname == 'Santos-Wintz' ~ 'Catarina.dossantos@bundestag.de',
+    vorname == 'Jan Wenzel' & nachname ==	'Schmidt' ~ 'Jan-Wenzel.Schmidt@bundestag.de',
+    vorname == 'Matthias W.' & nachname == 'Birkwald' ~ 'Matthias-W.birkwald@bundestag.de',
+    vorname == 'Ingeborg'	& nachname == 'Gräßle' ~ 'Inge.Graessle@bundestag.de',
+    vorname == 'Anne Monika' &	nachname == 'Spallek' ~ 'Anne-Monika.Spallek@bundestag.de',
+    vorname == 'Marja-Liisa' & nachname == 'Völlers' ~ 'Marja.Voellers@bundestag.de',
+    vorname == 'Alexander Graf' & nachname == 'Lambsdorff' ~ 'Alexander.GrafLambsdorff@bundestag.de',
+    vorname == 'Olaf' & nachname == 'in der Beek' ~ 'Olaf.inderBeek@bundestag.de',
+    TRUE ~ email)
+  )
+
 
 
 
